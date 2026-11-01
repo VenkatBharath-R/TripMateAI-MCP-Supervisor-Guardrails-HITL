@@ -1,0 +1,661 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="theme-color"
+    content="#07111f"
+  >
+  <meta
+    name="description"
+    content="TripMate AI transforms your travel ideas into intelligent, personalized itineraries with AI agents, guardrails, and human approval."
+  >
+
+  <title>TripMate AI | Living Atlas</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+  >
+
+  <link rel="stylesheet" href="/static/style.css?v=4">
+</head>
+
+<body>
+  <div class="page-bg" aria-hidden="true">
+    <div class="gradient-circle circle-1"></div>
+    <div class="gradient-circle circle-2"></div>
+    <div class="gradient-circle circle-3"></div>
+    <div class="background-grid"></div>
+  </div>
+
+  <main class="app-container">
+
+    <!-- Navigation -->
+    <header class="topbar">
+      <a href="/" class="brand" aria-label="TripMate AI home">
+        <span class="brand-icon">
+          <i class="fa-solid fa-earth-asia"></i>
+        </span>
+
+        <span class="brand-name">
+          TripMate<span>AI</span>
+        </span>
+
+        <span class="brand-divider"></span>
+        <span class="brand-edition">LIVING ATLAS</span>
+      </a>
+
+      <div class="topbar-right">
+        <div class="system-status">
+          <span class="status-dot"></span>
+          <span>AI SYSTEM ONLINE</span>
+        </div>
+
+        <a href="#planner" class="nav-cta">
+          Start exploring
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero-section">
+      <div class="hero-copy">
+        <div class="eyebrow hero-eyebrow">
+          <span class="eyebrow-line"></span>
+          YOUR NEXT CHAPTER STARTS HERE
+        </div>
+
+        <h1>
+          The world is<br>
+          <span class="hero-highlight">yours to wander.</span>
+        </h1>
+
+        <p class="hero-description">
+          Tell us where your curiosity leads. Your personal AI travel team
+          will turn the idea into a thoughtful, budget-aware journey.
+        </p>
+
+        <div class="hero-features">
+          <span>
+            <i class="fa-solid fa-route"></i>
+            Smart itineraries
+          </span>
+
+          <span>
+            <i class="fa-solid fa-shield-halved"></i>
+            Guardrail protected
+          </span>
+
+          <span>
+            <i class="fa-solid fa-user-check"></i>
+            You stay in control
+          </span>
+        </div>
+      </div>
+
+      <!-- Decorative globe: CSS-driven, no external map API required -->
+      <div class="hero-visual" aria-label="Illustration of a connected global travel map">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="orbit orbit-three"></div>
+
+        <div class="globe-halo"></div>
+
+        <div class="atlas-globe">
+          <div class="globe-grid globe-grid-horizontal"></div>
+          <div class="globe-grid globe-grid-vertical"></div>
+          <div class="globe-land land-one"></div>
+          <div class="globe-land land-two"></div>
+          <div class="globe-land land-three"></div>
+          <div class="globe-land land-four"></div>
+
+          <svg
+            class="globe-routes"
+            viewBox="0 0 360 360"
+            role="img"
+            aria-label="Illustrated travel routes across the globe"
+          >
+            <path d="M65 178 Q115 65 210 125 T294 213"
+              class="route-path route-path-one"/>
+            <path d="M75 235 Q155 290 205 195 T295 142"
+              class="route-path route-path-two"/>
+            <path d="M100 105 Q160 175 250 250"
+              class="route-path route-path-three"/>
+
+            <circle cx="65" cy="178" r="5" class="route-point"/>
+            <circle cx="210" cy="125" r="5" class="route-point"/>
+            <circle cx="294" cy="213" r="5" class="route-point"/>
+            <circle cx="75" cy="235" r="4" class="route-point"/>
+            <circle cx="205" cy="195" r="5" class="route-point"/>
+            <circle cx="295" cy="142" r="4" class="route-point"/>
+          </svg>
+        </div>
+
+        <div class="floating-label floating-label-top">
+          <span class="floating-label-icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </span>
+          <span>
+            <strong>Everywhere</strong>
+            <small>Your next destination</small>
+          </span>
+        </div>
+
+        <div class="floating-label floating-label-bottom">
+          <span class="floating-weather-icon">
+            <i class="fa-solid fa-cloud-sun"></i>
+          </span>
+          <span>
+            <strong>One intelligent plan</strong>
+            <small>Many agents. One journey.</small>
+          </span>
+        </div>
+
+        <div class="globe-coordinate coordinate-one">35° 41′ N</div>
+        <div class="globe-coordinate coordinate-two">139° 41′ E</div>
+      </div>
+    </section>
+
+    <!-- Quick destination ideas -->
+    <section class="destination-section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">FIND YOUR NEXT SOMEWHERE</span>
+          <h2>A little inspiration</h2>
+        </div>
+
+        <span class="section-note">
+          <i class="fa-solid fa-sparkles"></i>
+          Pick a starting point
+        </span>
+      </div>
+
+      <div class="destination-grid">
+
+        <button
+          class="destination-card destination-japan"
+          type="button"
+          onclick="setPrompt('Plan a complete 7-day Japan trip from Bangladesh, including flights, hotels, sightseeing, local transport and a budget breakdown under 2 lakhs.')"
+        >
+          <span class="destination-image">
+            <img
+              src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=700&q=85"
+              alt="Traditional Japanese street"
+              loading="lazy"
+            >
+            <span class="destination-overlay"></span>
+            <span class="destination-number">01</span>
+            <span class="destination-arrow">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </span>
+          </span>
+
+          <span class="destination-details">
+            <span class="destination-country">EAST ASIA</span>
+            <strong>Japan</strong>
+            <span class="destination-caption">Culture, calm & neon nights</span>
+          </span>
+        </button>
+
+        <button
+          class="destination-card destination-dubai"
+          type="button"
+          onclick="setPrompt('Plan a 5-day Dubai trip from Dhaka with flight options, hotel recommendations, sightseeing, local transport and an estimated total budget.')"
+        >
+          <span class="destination-image">
+            <img
+              src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=700&q=85"
+              alt="Dubai skyline"
+              loading="lazy"
+            >
+            <span class="destination-overlay"></span>
+            <span class="destination-number">02</span>
+            <span class="destination-arrow">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </span>
+          </span>
+
+          <span class="destination-details">
+            <span class="destination-country">MIDDLE EAST</span>
+            <strong>Dubai</strong>
+            <span class="destination-caption">Skyline, desert & discovery</span>
+          </span>
+        </button>
+
+        <button
+          class="destination-card destination-thailand"
+          type="button"
+          onclick="setPrompt('Plan a 7-day Thailand trip from Bangladesh with affordable hotels, flights, island visits, sightseeing, local transport and a complete budget breakdown.')"
+        >
+          <span class="destination-image">
+            <img
+              src="https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=700&q=85"
+              alt="Tropical Thailand landscape"
+              loading="lazy"
+            >
+            <span class="destination-overlay"></span>
+            <span class="destination-number">03</span>
+            <span class="destination-arrow">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </span>
+          </span>
+
+          <span class="destination-details">
+            <span class="destination-country">SOUTHEAST ASIA</span>
+            <strong>Thailand</strong>
+            <span class="destination-caption">Island escapes & street food</span>
+          </span>
+        </button>
+
+        <button
+          class="destination-card destination-custom"
+          type="button"
+          onclick="document.getElementById('userInput').focus(); document.getElementById('planner').scrollIntoView({behavior:'smooth'});"
+        >
+          <span class="custom-destination-art">
+            <span class="custom-orbit custom-orbit-one"></span>
+            <span class="custom-orbit custom-orbit-two"></span>
+            <i class="fa-solid fa-earth-americas"></i>
+            <span class="custom-plus">+</span>
+          </span>
+
+          <span class="destination-details">
+            <span class="destination-country">YOUR WORLD</span>
+            <strong>Somewhere else</strong>
+            <span class="destination-caption">Dream it. We'll map it.</span>
+          </span>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- Main travel planner -->
+    <section id="planner" class="planner-section">
+      <div class="planner-card">
+        <div class="planner-card-header">
+          <div class="planner-heading">
+            <span class="planner-icon">
+              <i class="fa-solid fa-compass"></i>
+            </span>
+
+            <div>
+              <span class="eyebrow">YOUR PERSONAL TRAVEL DESK</span>
+              <h2>Let's map out your journey.</h2>
+              <p>
+                Share the destination, dates, departure city and budget.
+                The more context you provide, the more tailored your plan can be.
+              </p>
+            </div>
+          </div>
+
+          <div class="planner-secure-label">
+            <i class="fa-solid fa-lock"></i>
+            AI-POWERED PLANNING
+          </div>
+        </div>
+
+        <div class="input-area">
+          <label class="input-label" for="userInput">
+            WHERE SHOULD WE TAKE YOU?
+          </label>
+
+          <div class="prompt-wrapper">
+            <span class="prompt-decoration">
+              <i class="fa-solid fa-location-arrow"></i>
+            </span>
+
+            <textarea
+              id="userInput"
+              rows="4"
+              maxlength="12000"
+              placeholder="Example: Plan a 7-day Japan trip from Bangladesh for two people. Include flight options, comfortable hotels, sightseeing, local transport and a total budget under 2 lakhs."
+              aria-label="Describe your travel plans"
+            ></textarea>
+          </div>
+
+          <div class="input-footer">
+            <div class="input-hint">
+              <i class="fa-regular fa-lightbulb"></i>
+              Destination, duration, budget and travel style are great starting points.
+            </div>
+
+            <span class="character-count" id="characterCount">0 / 12000</span>
+          </div>
+
+          <div class="quick-prompts">
+            <span class="quick-prompts-label">TRY A PROMPT</span>
+
+            <button
+              class="prompt-chip"
+              type="button"
+              onclick="setPrompt('Plan a 7-day Japan trip from Bangladesh for two people under 2 lakhs, including flights, hotels and sightseeing.')"
+            >
+              <i class="fa-solid fa-torii-gate"></i>
+              Japan, 7 days
+            </button>
+
+            <button
+              class="prompt-chip"
+              type="button"
+              onclick="setPrompt('Plan a 5-day Dubai trip from Dhaka with flights, hotels, sightseeing and a complete budget breakdown.')"
+            >
+              <i class="fa-solid fa-city"></i>
+              Dubai, 5 days
+            </button>
+
+            <button
+              class="prompt-chip"
+              type="button"
+              onclick="setPrompt('Plan a budget-friendly 7-day Thailand trip from Bangladesh with hotels, flights, islands and sightseeing.')"
+            >
+              <i class="fa-solid fa-umbrella-beach"></i>
+              Thailand, 7 days
+            </button>
+
+            <button
+              class="prompt-chip"
+              type="button"
+              onclick="setPrompt('Help me compare flight options for an international trip. Ask me for my departure city, destination and travel dates if needed.')"
+            >
+              <i class="fa-solid fa-plane"></i>
+              Flight planning
+            </button>
+          </div>
+
+          <div class="planner-submit-row">
+            <div class="submit-assurance">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>Your draft is reviewed before final approval.</span>
+            </div>
+
+            <button
+              id="sendBtn"
+              class="generate-btn"
+              type="button"
+              onclick="sendMessage()"
+            >
+              <span id="btnText">
+                Generate my itinerary
+                <i class="fa-solid fa-arrow-right"></i>
+              </span>
+
+              <span id="btnLoader" class="loader hidden"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow progress -->
+    <section id="workflowSection" class="workflow-section hidden">
+      <div class="workflow-card">
+        <div class="workflow-header">
+          <div>
+            <span class="eyebrow">BEHIND THE JOURNEY</span>
+            <h2>Your AI travel team</h2>
+            <p class="workflow-subtitle">
+              Your request is routed through the supervisor and relevant specialist agents.
+            </p>
+          </div>
+
+          <span id="guardrailBadge" class="guardrail-badge">
+            <i class="fa-solid fa-shield-halved"></i>
+            Guardrail status unavailable
+          </span>
+        </div>
+
+        <div class="workflow-timeline" aria-label="AI travel planning workflow">
+          <div class="timeline-step timeline-step-active">
+            <span class="timeline-node">
+              <i class="fa-solid fa-brain"></i>
+            </span>
+            <span class="timeline-step-label">Supervisor</span>
+          </div>
+
+          <span class="timeline-connector"></span>
+
+          <div class="timeline-step">
+            <span class="timeline-node">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </span>
+            <span class="timeline-step-label">Research</span>
+          </div>
+
+          <span class="timeline-connector"></span>
+
+          <div class="timeline-step">
+            <span class="timeline-node">
+              <i class="fa-solid fa-route"></i>
+            </span>
+            <span class="timeline-step-label">Itinerary</span>
+          </div>
+
+          <span class="timeline-connector"></span>
+
+          <div class="timeline-step">
+            <span class="timeline-node">
+              <i class="fa-solid fa-user-check"></i>
+            </span>
+            <span class="timeline-step-label">Your approval</span>
+          </div>
+        </div>
+
+        <div class="supervisor-panel">
+          <div class="supervisor-panel-heading">
+            <span class="supervisor-icon">
+              <i class="fa-solid fa-diagram-project"></i>
+            </span>
+
+            <div>
+              <h3>Supervisor execution plan</h3>
+              <p>How your request is being coordinated</p>
+            </div>
+          </div>
+
+          <p id="supervisorReasoning" class="supervisor-reasoning">
+            The supervisor execution plan will appear here after you submit a request.
+          </p>
+
+          <div class="agent-section-heading">
+            <span>SELECTED SPECIALIST AGENTS</span>
+            <span class="agent-section-caption">ROUTED BY SUPERVISOR</span>
+          </div>
+
+          <div id="agentChips" class="agent-chips"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Travel plan output -->
+    <section id="resultSection" class="result-section hidden">
+      <div class="result-header">
+        <div class="result-heading">
+          <span class="eyebrow">YOUR JOURNEY, MAPPED</span>
+          <h2 id="resultTitle">Your AI Travel Plan</h2>
+          <p id="threadInfo">Thread ID: -</p>
+        </div>
+
+        <div class="result-actions">
+          <button
+            class="copy-btn"
+            type="button"
+            onclick="copyResult()"
+          >
+            <i class="fa-regular fa-copy"></i>
+            Copy plan
+          </button>
+
+          <button
+            class="download-btn"
+            type="button"
+            onclick="downloadPDF()"
+          >
+            <i class="fa-solid fa-file-pdf"></i>
+            Download PDF
+          </button>
+        </div>
+      </div>
+
+      <div id="pdfContent" class="pdf-content">
+        <div class="pdf-document-header">
+          <div class="pdf-brand">
+            <i class="fa-solid fa-earth-asia"></i>
+            TRIPMATE AI
+          </div>
+
+          <h1 class="pdf-title">Your journey, mapped.</h1>
+
+          <p class="pdf-subtitle">
+            A personalized travel plan prepared with your AI travel team.
+          </p>
+        </div>
+
+        <div id="resultBox" class="result-box"></div>
+      </div>
+    </section>
+
+    <!-- Human-in-the-Loop -->
+    <section id="approvalSection" class="approval-section hidden">
+      <div class="approval-card">
+        <div class="approval-topline">
+          <span class="approval-icon">
+            <i class="fa-solid fa-user-check"></i>
+          </span>
+
+          <span class="approval-status">
+            <span class="approval-status-dot"></span>
+            YOUR DECISION REQUIRED
+          </span>
+        </div>
+
+        <div class="approval-content">
+          <span class="eyebrow">HUMAN-IN-THE-LOOP</span>
+
+          <h2>Before we make it final...</h2>
+
+          <p id="approvalRequest">
+            Review the draft itinerary. Approve it to continue, or share feedback
+            so your AI travel team can revise the plan.
+          </p>
+
+          <label class="input-label" for="approvalFeedback">
+            WANT TO CHANGE ANYTHING?
+          </label>
+
+          <textarea
+            id="approvalFeedback"
+            class="feedback-input"
+            rows="3"
+            maxlength="5000"
+            placeholder="For example: reduce hotel costs, include more cultural attractions, or add a rest day..."
+          ></textarea>
+
+          <div class="approval-actions">
+            <button
+              id="approveBtn"
+              class="approve-btn"
+              type="button"
+              onclick="submitApproval(true)"
+            >
+              <i class="fa-solid fa-check"></i>
+              Approve &amp; generate final
+            </button>
+
+            <button
+              id="reviseBtn"
+              class="revise-btn"
+              type="button"
+              onclick="submitApproval(false)"
+            >
+              <i class="fa-solid fa-rotate-left"></i>
+              Revise with feedback
+            </button>
+          </div>
+
+          <p class="approval-footnote">
+            <i class="fa-solid fa-lock"></i>
+            Your approval is part of the planning workflow.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Error feedback -->
+    <section
+      id="errorBox"
+      class="error-box hidden"
+      role="alert"
+      aria-live="polite"
+    ></section>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <a href="/" class="footer-brand">
+        <i class="fa-solid fa-earth-asia"></i>
+        TripMate AI
+      </a>
+
+      <p>
+        Intelligent travel planning.
+        <span>Your world, thoughtfully mapped.</span>
+      </p>
+
+      <div class="footer-tech">
+        <span>FASTAPI</span>
+        <span>LANGGRAPH</span>
+        <span>MCP</span>
+        <span>GUARDRAILS</span>
+        <span>HITL</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="/static/script.js?v=4"></script>
+
+  <!-- Character counter for the travel prompt -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const input = document.getElementById("userInput");
+      const counter = document.getElementById("characterCount");
+
+      if (!input || !counter) return;
+
+      function updateCharacterCount() {
+        counter.textContent = `${input.value.length} / 12000`;
+      }
+
+      input.addEventListener("input", updateCharacterCount);
+
+      input.addEventListener("keydown", function (event) {
+        if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+          event.preventDefault();
+
+          const sendButton = document.getElementById("sendBtn");
+
+          if (sendButton && !sendButton.disabled) {
+            sendButton.click();
+          }
+        }
+      });
+
+      updateCharacterCount();
+    });
+  </script>
+</body>
+</html>
